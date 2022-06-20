@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>common method</title>
+    <style>
+        .docker{
+            width: 100px;
+            height: 100px;
+            background: aquamarine;
+            left: 100px;
+            top:100px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search">
+    <div id="box">I am not removed</div>
+    <div class="docker" id="docker"></div>
+    <script>
+        var search =  document.getElementById("search");
+        search.focus(); //make mouse focus
+        search.blur(); //lost focus
+        var docker =  document.getElementById("docker");
+        console.log(docker.getBoundingClientRect()); //return size,position, etc.
+
+        var box =  document.getElementById("box");
+        box.remove();   //remove element
+    </script>
+</body>
+</html>
