@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>create</title>
+</head>
+<body>
+
+    <script>
+        var body = document.getElementsByTagName("body"); //collection of body tag
+        console.log(body[0]);
+        var div = document.createElement("div"); //create an element
+        var text = document.createTextNode("dynamic create tag");   //create content
+        var attr = document.createAttribute("class");   //create attribute
+        
+        attr.value = "container";
+        //console.log(attr);
+        div.appendChild(text);
+        div.setAttributeNode(attr); //insert attribute
+
+        body[0].appendChild(div); //append element to a parent
+
+        //eg. 
+        var img = document.createElement("img");
+        //img.src = "https://p2.itc.cn/images01/20210215/c904142159564469b59fd1d6b04b930e.jpeg";
+        var image = document.createAttribute("src");
+        image.value = "https://p2.itc.cn/images01/20210215/c904142159564469b59fd1d6b04b930e.jpeg";
+        img.setAttributeNode(image);
+        
+        console.log(img);
+    </script>
+</body>
+</html>
