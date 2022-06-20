@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>elements</title>
+</head>
+<body>
+    <div id="container" class="big small">container</div>
+    <script>
+       var container = document.getElementById("container");    //get element by ID
+       container.id = "docker"; //change ID
+       container.classList.add("middle","...");   //new class name
+       container.classList.remove("small"); //remove specific ID
+       container.classList.toggle("toggle"); //if exist delete, otherwise delete
+        
+       console.log(container.id);
+       console.log(container.className);
+       console.log(container.classList.contains("docker")); //check if exist
+       
+       console.log(container.innerHTML);    //replace and render
+       container.innerHTML = "<a href='www.google.com'>google</a>";
+
+       //console.log(container.innerText);  //doesn;t render
+       //container.innerText = "<a href='www.google.com'>google</a>";
+    </script>
+</body>
+</html>
