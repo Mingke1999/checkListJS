@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>element position</title>
+    <style>
+        .box{
+            height: 200px;
+            background-color: bisque;
+            border: 10px solid aqua;
+            padding: 10px;
+            margin: 10px;
+        }
+        .parent{
+            width: 500px;
+            height: 500px;
+            background: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="box" id="box"></div>
+    </div>
+    
+    <script>
+        var box = document.getElementById("box");
+        //relative parent distance
+        console.log(box.offsetLeft);
+        console.log(box.offsetTop);
+        /*
+        //get size including padding, not including border and margin
+        console.log(box.clientHeight);  
+        console.log(box.clientWidth);
+
+         //get size including padding and redundancy, not including border and margin
+        console.log("scrollHeight "+ box.scrollHeight);
+        console.log("scrollWidth "+box.scrollWidth);
+
+         //get size including padding, border but margin
+        console.log("offsetHeight "+ box.offsetHeight);
+        console.log("offsetWidth "+box.offsetWidth);
+
+        //document height,width
+        console.log(document.documentElement.clientHeight);
+        console.log(document.documentElement.clientWidth);
+
+        //body height,width
+        console.log(document.body.clientHeight);
+        console.log(document.body.clientWidth);
+
+        //element border length of vertical or horizontal
+        console.log("border length of vertical "+ box.clientLeft);
+        console.log("border length of horizontal"+ box.clientTop);
+
+        //user involved called event
+        window.addEventListener("scroll",function(){
+            console.log(document.documentElement.scrollTop); //vertical
+            //console.log(document.documentElement.scrollLeft); //horizontal
+        })
+        */
+
+    </script>
+</body>
+</html>
