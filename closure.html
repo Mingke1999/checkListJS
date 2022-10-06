@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <script>
+    //1. closure is a function can read variable from other function
+         function getName(){
+            var username = 'mingke';    
+            //the username value is not available outside of the function
+            function innerGetName(){    
+                //declard a function, function is inside getName
+                //so it's able to get username value
+                //the username value will be returned when innerGetName is called
+                return username;        
+            }
+
+            return innerGetName;    //return innderGetName function
+         }
+         var result = getName();    //getName->innderGetName->username
+         var name = result();
+         console.log(name);
+    </script>
+    <script>
+    //2. variable values are always held in the memory
+    /*
+     function getNum(){
+        var num = 100;  //var is function level variable
+        num += 1;
+     }
+
+     getNum(); 1    //101
+     getNum(); 1    //101
+     getNum(); 1    //101
+    */
+    function getNum(){
+        var num = 100;  //num value is kept in the memory for value 100
+
+        function add(){ 
+            num += 1;
+        }
+        return add;
+     }
+     var result = getNum();
+     result();  //101
+     result();  //102
+
+    </script>
+    <script>
+        function count(){
+            var arr = [];
+            for(var i=1;i<=3;i++){
+                //var i = 1; var i = 2; ...
+                arr.push((
+                    function(n){    //warpped with function
+                        return function(){  //give a name or return
+                            return n*n;
+                        }
+                })(i));
+            }
+           
+            return arr;
+        }
+        var result = count(); //function inside push wasn't called
+        var c1 = result[0]; console.log(c1()); //  expected 1 result 16
+        var c1 = result[1]; console.log(c2()); //  expected 4 result 16
+        var c1 = result[2]; console.log(c3()); //  expected 9 result 16
+
+    </script>
+    <script>
+        /**
+        1. event this, refers to the trigger
+        2. object this. refers to the caller
+        3. closure this, always refers to the window
+        */
+        var name = "The Window";
+        var object = {
+            name : "My Object",
+            getNameFunc: function(){
+                return function(){
+                    return this.name; //1. find the closet reference getNameFunc
+                }
+            }
+        }
+        var result = object.getNameFunc(); //2. found here
+        var uname = result(); //window.result() in default
+        console.log(uname); //-> The Window
+    </script>
+    <script>
+        var name = "The Window";
+        var object = {
+            name : "My Object",
+            getNameFunc: function(){
+                var that = this; //1. find the closet reference getNameFunc
+                return function(){
+                    return that.name; 
+                }
+            }
+        }
+        var result = object.getNameFunc(); //2.called by object
+        var uname = result();
+        console.log(uname); //-> Mt Object
+    </script>
+</body>
+</html>
