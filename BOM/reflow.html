@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflow and Repaint</title>
+    <link rel="stylesheet" href="./reflow.css">
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">Button</button>
+    <script>
+        var box = document.getElementById('box');
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            box.style.width = '200px'; //reflow
+            /**
+             * Reflow: higher cost, Rapint lower
+             * 1. page intiation
+             * 2. change font-siae,element size and content
+             * 3 add or remove elements. 
+             * 4. when sroll and there is a fixed position element
+             * 5. change window size
+             */
+            //repaint: color, border-style, visibility and background
+        }
+        
+    </script>
+    <!-- Optimization
+    1. Reading or Writing DOM Continuously
+    2. caching dom
+    3. operate dom by documentFragment
+    4. animation element use absolute or fixed to locate
+    5. only in necassaty to hide
+    6. use virtual DOM
+    -->
+</body>
+</html>
