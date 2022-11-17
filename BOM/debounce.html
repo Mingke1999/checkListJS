@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce</title>
+    <style>
+        .box{
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script>
+        /* trigger frequency is very high */
+        // window.onscroll = function(){
+        //       var scrolTop =  document.documentElement.scrollTop;
+        //        console.log(scrolTop)
+        // }
+        
+        /* very operate smaller that 300ms, not execute */
+        // var timer = null;
+        // function debounce(){
+        //     if(timer){
+        //         clearTimeout(timer)
+        //     }
+        //     timer = setTimeout(function(){
+        //         var scrolTop =  document.documentElement.scrollTop;
+        //         console.log(scrolTop)
+        //     },300)
+        // }
+        // window.onscroll = function(){
+        //     debounce();
+        // }
+
+        /**
+         * 1. timer
+         * 2. closure
+         * 3. event only triggered once, but execute inside code.
+         */
+        function debounce(func,delay){
+            var timer = null; //not affect globally
+            //console.log("outside")
+            return function(){
+                
+                //console.log("inside")
+                if(timer){
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(func,delay)
+            }
+        }
+        function backTop(){
+            var scrolTop =  document.documentElement.scrollTop;
+            console.log(scrolTop)
+        }
+        // window.onscroll = function(){
+        //     var result = debounce(backTop(),300);
+        //     result();
+        // }
+        window.onscroll = debounce(backTop,300)
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout and setInterval</title>
+</head>
+<body>
+    <div id="box" style="width:100px;height:100px;background:red;">
+
+    </div>
+    <script>
+        //window.setTimeout()
+        //how long a block of codes will execute, return an int timeoutId
+        var timeoutId = setTimeout(function(){
+            console.log('5 seconds have passed')
+        },5000)
+        //console.log(timeoutId);
+        ///clearTimeout(timeoutId);
+        //this points to window at default
+        var username = 'window';
+        var user = {
+            username:'Mingke',
+            getName:function(){
+                var pointer = this;
+                setTimeout(function(){
+                    console.log(pointer.username)
+                },1000)
+            }
+        }
+        user.getName()
+    </script>
+    <script>
+        var box = document.getElementById('box');
+        var opacity = 1;
+        var timer = setInterval(function(){
+            //console.log('1 second passed')
+            opacity -= 0.05;
+            if(opacity<=0){
+                clearInterval(timer)
+            }else{
+                box.style.opacity = opacity;
+            }
+           
+        },300)
+    </script>
+</body>
+</html>

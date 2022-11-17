@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttle</title>
+    <style>
+        .box{
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script>
+        /**
+         * No matter how user click, only execute in fixed interval time
+         * search tip,
+         * resize window, only end up with the last operate size
+         */
+        function throttle(func,delay){
+            var valid = true;
+            return function(){
+                if(!valid){
+                    return false; //not more later code
+                }   
+                valid = false;
+                setTimeout(function(){
+                    func();
+                    valid = true;
+                },delay)
+            }
+        }
+        function backTop(){
+            var scrollHeight = document.documentElement.scrollTop;
+            console.log(scrollHeight);
+        } 
+        window.onscroll = throttle(backTop,1000);
+    </script>
+</body>
+</html>
