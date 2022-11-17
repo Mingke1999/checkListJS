@@ -45,15 +45,13 @@
          * 3. event only triggered once, but execute inside code.
          */
         function debounce(func,delay){
-            var timer = null; //not affect globally
-            //console.log("outside")
-            return function(){
-                
-                //console.log("inside")
-                if(timer){
+            var timer = null; //not affect globally 
+          
+            return function(){ //only execute function inside repeatly
+                if(timer){ //in 300ms click again, remove timer
                     clearTimeout(timer)
                 }
-                timer = setTimeout(func,delay)
+                timer = setTimeout(func,delay) //only execute in 300ms
             }
         }
         function backTop(){
@@ -64,7 +62,7 @@
         //     var result = debounce(backTop(),300);
         //     result();
         // }
-        window.onscroll = debounce(backTop,300)
+        window.onscroll = debounce(backTop,300) //closure
     </script>
 </body>
 </html>

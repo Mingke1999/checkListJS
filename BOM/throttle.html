@@ -24,16 +24,16 @@
          * resize window, only end up with the last operate size
          */
         function throttle(func,delay){
-            var valid = true;
+            var valid = true; //1. default valid true
             return function(){
-                if(!valid){
-                    return false; //not more later code
+                if(!valid){ //3.1 not valid so no more later code
+                    return false; 
                 } 
-                  
-                valid = false;
-                setTimeout(function(){
+
+                valid = false; //2. set valid false
+                setTimeout(function(){ //4. until timeout then execute func and set valid true
                     func();
-                    valid = true;
+                    valid = true; //5. valid true so return to step 1
                 },delay)
             }
         }
@@ -41,7 +41,8 @@
             var scrollHeight = document.documentElement.scrollTop;
             console.log(scrollHeight);
         } 
-        window.onscroll = throttle(backTop,1000);
+        window.onscroll = throttle(backTop,1000); 
+        //this is closure, so only execute content inside return function, repeatly
     </script>
 </body>
 </html>
