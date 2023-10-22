@@ -1,1 +1,1 @@
-# DOM and BOM
+# Document Oject Model and Browser Object Model
